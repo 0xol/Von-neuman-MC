@@ -1,18 +1,17 @@
 import asyncio
 import websockets
+import json
 
 def handleTurtleData(data):
-    if int(data.message.id) != 1:
-        return 'os.setComputerLabel(1)'
+    print(data)
+    return "OK"
+        
 
 async def echo(websocket):
+    print("connection made")
     try:
         async for message in websocket:
-            print(message)
-            
-            await websocket.send(handleTurtleData)
-
-        print("connection made")
+            await websocket.send(handleTurtleData(message))
     except:
         print("connection closed")
 
