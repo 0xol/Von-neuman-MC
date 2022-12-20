@@ -17,13 +17,13 @@ COM ids
 11 place
 12 placeUp
 13 placeDown
-14 drop
-15 dropUp
-16 dropDown
+14 deposit      number after command id is amount to be dropped
+15 depositUp
+16 depositDown
 17 grab
 18 grabUp
 19 grabDown
-20 transfer     number after command id is slot to transfer current selected slot's items
+20 transfer     SLOT=(destination slot)___AMOUNT=(amount to be transferred)
 21 sleep        number after command id is seconds to sleep
 
 99 get next command / turtle-server registration (turtle only)
@@ -45,8 +45,8 @@ ID=(turtle's id number)___X=(turtle's x)___Y=(turtle's y)___Z=(turtle's z)___FAC
 
 example conversation
 
-TURTLE: ID=0____X=300___Y=100___Z=200___FACE=NORTH___COM=99 //what is my next command
+TURTLE: ID=0____X=300___Y=100___Z=200___FACE=NORTH___COM=99 //what is my next command?
 
 SERVER: ID=0___COM=0 //turtle 0, go forward
 
-TURTLE: ID=0____X=301___Y=100___Z=200___FACE=NORTH___COM=99 //what is my next command
+TURTLE: ID=0____X=301___Y=100___Z=200___FACE=NORTH___COM=99 //what is my next command?

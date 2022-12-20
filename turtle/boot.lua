@@ -44,8 +44,105 @@ function turnLeft()
         posface = "SOUTH"
         return
     end
-
 end
+
+function turnRight()
+    
+    turtle.turnRight()
+    
+    if (posface == "NORTH") then
+        posface = "EAST"
+        return
+    elseif (posface == "SOUTH") then
+        posface = "WEST"
+        return
+    elseif (posface == "EAST") then
+        posface = "SOUTH"
+        return
+    elseif (posface == "WEST") then
+        posface = "NORTH"
+        return
+    end 
+end
+
+function moveUp()
+    turtle.up()
+    posy = posy + 1
+end
+
+function moveDown()
+    turtle.down()
+    posy = posy - 1
+end
+
+function refuel(amount)
+    turtle.refuel(amount)
+end
+
+function selectSlot(slotNum)
+    turtle.select(slotNum + 1) --plus one because lua indexing starts at and python starts at 0
+end
+
+function craftItem(amount)
+    turtle.craft(amount)
+end
+
+function mine()
+    turtle.dig()
+end
+
+function mineUp()
+    turtle.digUp()
+end
+
+function mineDown()
+    turtle.digDown()
+end
+
+function place()
+    turtle.place()
+end
+
+function placeUp()
+    turtle.placeUp()
+end
+
+function placeDown()
+    turtle.placeDown()
+end
+
+function deposit(amount)
+    turtle.drop(amount)
+end
+
+function depositUp(amount)
+    turtle.dropUp(amount)
+end
+
+function depositDown(amount)
+    turtle.dropDown()
+end
+
+function grab(amount)
+   turtle.suck(amount) 
+end
+
+function grabUp(amount)
+    turtle.suckUp(amount)
+end
+
+function grabDown(amount)
+    turtle.suckDown(amount)
+end
+
+function transfer(slot, amount)
+    turtle.transferTo(slot, amount)
+end
+
+function sleep(seconds)
+    os.sleep(seconds)
+end
+
 
 function split(input, sep)
     if sep == nil then
