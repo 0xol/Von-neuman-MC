@@ -4,7 +4,7 @@ import json
 
 def handleTurtleData(data):
     print(data)
-    return "OK"
+    return "SUS"
         
 
 async def echo(websocket):
