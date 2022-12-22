@@ -5,6 +5,8 @@ local posz = -144
 
 local posface = "NORTH"
 
+local response = ""
+
 --ip & port of the python server
 local ws, err = http.websocket("ws://192.168.1.117:8863")
 
@@ -143,7 +145,6 @@ function sleep(seconds)
     os.sleep(seconds)
 end
 
-
 function split(input, sep)
     if sep == nil then
         sep = "%s"
@@ -155,20 +156,59 @@ function split(input, sep)
     return t
 end
 
---ws.send("ID=" .. os.getComputerID() .. "___X=" .. posx .. "___Y=" .. posy .. "___Z=" .. posz)
+function serverRequestHandler(request)
+    if request[2] == "COM=0" then
+        moveForward()
+    elseif request[2] == "COM=1" then
+        turnLeft()
+    elseif request[2] == "COM=2" then
+        turnRight()
+    elseif request[2] == "COM=3" then
+        moveUp()
+    elseif request[2] == "COM=4" then
+        moveDown()
+    elseif request[2] == "COM=5" then
+        refuel(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=6" then
+        selectSlot(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=7" then
+        craftItem(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=8" then
+        mine()
+    elseif request[2] == "COM=9" then
+        mineUp()
+    elseif request[2] == "COM=10" then
+        mineDown()
+    elseif request[2] == "COM=11" then
+        place()
+    elseif request[2] == "COM=12" then
+        placeUp()
+    elseif request[2] == "COM=13" then
+        placeDown()
 
-local block, data = turtle.inspect()
+    end
+end
 
-turtle.select(2 )
-turtle.place()
+function main()
 
-data_p = data["name"]
+    if response ~= "" then
+        ws.send(response)
+        response = ""
+    end
 
-ws.send(data_p)
+    ws.send("ID=" .. os.getComputerID() .. "___X=" .. posx .. "___Y=" .. posy .. "___Z=" .. posz .. "___FACE=" .. posface .. "___COM=99")
 
-print(split(ws.receive(), " ")[1]) 
+    local command = ws.receive()
 
-ws.close()
+    local command_table = split(command, "___")
 
---func = assert(loadstring(ws.receive(5)))
---func()
+    if (command_table[1] == "ID=" .. os.getComputerID()) then
+        serverRequestHandler(command_table)
+    end
+end
+
+main()
+
+--while true do
+--    main()
+--end

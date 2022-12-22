@@ -8,7 +8,7 @@ COM ids
 4  moveDown
 
 //misc
-5  refuel        number after command id is amount to be refuelled by
+5  refuel        COM=5___AMOUNT=(amount)
 6  selectSlot    number after command id is slot to be selected
 7  craftItem     number after command id is ammount to be made, current selected slot will store crafted item
 8  mine
@@ -30,12 +30,12 @@ COM ids
 
 turtle functions accessable by the server where a turtle will respond
 
- getTurtleType returns either "B" or "A" for basic or advanced
- getFuelLevel  number after response is fuel level
- getSlotDetail returns string (NAME=(item name)___COUNT=(item count))
- getBlock      returns string (NAME=(block name), returns "NULL" if air/liquid
- getBlockUp    returns string (NAME=(block name), returns "NULL" if air/liquid
- getBlockDown  returns string (NAME=(block name), returns "NULL" if air/liquid
+22 getTurtleType returns either "B" or "A" for basic or advanced
+23 getFuelLevel  number after response is fuel level
+24 getSlotDetail returns string (NAME=(item name)___COUNT=(item count))
+25 getBlock      returns string (NAME=(block name), returns "NULL" if air/liquid
+26 getBlockUp    returns string (NAME=(block name), returns "NULL" if air/liquid
+27 getBlockDown  returns string (NAME=(block name), returns "NULL" if air/liquid
 
 server response format
 ID=(id number)___COM=(command_ID)___(rest is dependent on command ID)
