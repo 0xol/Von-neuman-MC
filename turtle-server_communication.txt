@@ -17,13 +17,13 @@ COM ids
 11 place
 12 placeUp
 13 placeDown
-14 deposit      number after command id is amount to be dropped
-15 depositUp
-16 depositDown
-17 grab
-18 grabUp
-19 grabDown
-20 transfer     SLOT=(destination slot)___AMOUNT=(amount to be transferred)
+14 deposit      COM=14___AMOUNT=(amount)
+15 depositUp    COM=15___AMOUNT=(amount)
+16 depositDown  COM=16___AMOUNT=(amount)
+17 grab         COM=17___AMOUNT=(amount)
+18 grabUp       COM=18___AMOUNT=(amount)
+19 grabDown     COM=19___AMOUNT=(amount)
+20 transfer     COM=20___SLOT=(destination slot)___AMOUNT=(amount to be transferred)
 21 sleep        number after command id is seconds to sleep
 
 99 get next command / turtle-server registration (turtle only)

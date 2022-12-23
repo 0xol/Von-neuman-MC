@@ -185,7 +185,22 @@ function serverRequestHandler(request)
         placeUp()
     elseif request[2] == "COM=13" then
         placeDown()
-
+    elseif request[2] == "COM=14" then
+        deposit(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=15" then
+        depositUp(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=16" then
+        depositDown(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=17" then
+        grab(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=18" then
+        grabUp(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=19" then
+        grabDown(tonumber(split(request[3],"=")[2]))
+    elseif request[2] == "COM=20" then
+        transfer((tonumber(split(request[3],"=")[2])), (tonumber(split(request[4],"=")[2])))
+    elseif request[2] == "COM=21" then
+        os.sleep((tonumber(split(request[3],"=")[2])))
     end
 end
 
